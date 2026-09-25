@@ -135,7 +135,7 @@
           } else if (donnee) {
             const couleur = couleurTerrain((grille.rows[r][c0] || {}).v);
             const conteneur = el("div", "puces");
-            const morceaux = d.role !== "note" && d.v.includes("/") && d.v.split("/").every((x) => x.trim().length <= 18)
+            const morceaux = d.role !== "note" && d.v.includes("/") && d.v.split("/").every((x) => x.trim().length <= 24)
               ? d.v.split("/").map((x) => x.trim()) : [d.v];
             for (const t of morceaux) {
               const hit = !!q && norm(t).includes(q);
