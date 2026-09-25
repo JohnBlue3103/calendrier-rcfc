@@ -274,3 +274,7 @@ table.grille.moderne td:not(.r-lieu):not(.r-titre) { min-width: 88px; }
 /* Matchs passés : un peu plus discrets */
 .carte-jour.passee { opacity: 0.88; }
 .carte-jour.passee .carte-tete { background: #16294a; }
+
+/* Cartes à 5 colonnes : ne pas coller la dernière étiquette au bord */
+table.matchs th.t-heure { min-width: 118px; }
+table.matchs td:last-child, table.matchs th:last-child { padding-right: 16px; }
