@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendrier — RCFC</title>
+  <meta name="description" content="Matchs et créneaux d'entraînement du RCFC."/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <header class="hero">
+    <img src="assets/logo.jpg" alt="Logo RCFC"/>
+    <h1 id="titre">Calendrier du club</h1>
+    <p id="sous-titre">RCFC</p>
+    <div class="divider"></div>
+  </header>
+
+  <main class="conteneur">
+    <nav class="onglets" role="tablist">
+      <button id="tab-matchs" class="actif" type="button" role="tab">Matchs</button>
+      <button id="tab-entrainements" type="button" role="tab">Entraînements</button>
+    </nav>
+
+    <div class="outils">
+      <input id="recherche" type="search" placeholder="Rechercher une équipe, un adversaire, un lieu…" aria-label="Rechercher"/>
+      <div class="boutons">
+        <a id="btn-agenda" class="btn" href="#" target="_blank" rel="noopener" hidden>Ajouter les matchs à mon agenda</a>
+        <button id="btn-imprimer" class="btn" type="button">Imprimer</button>
+      </div>
+      <div id="vue-ent" class="boutons" style="display:none">
+        <button id="vue-tableau" class="btn actif" type="button">Tableau</button>
+        <button id="vue-jour" class="btn" type="button">Par jour</button>
+      </div>
+    </div>
+
+    <p id="bandeau-demo" class="bandeau" hidden>Mode démonstration : ces données sont fictives. Renseignez la source correspondante dans <code>js/config.js</code>.</p>
+    <p id="etat" class="etat">Chargement du planning…</p>
+    <div id="liste"></div>
+  </main>
+
+  <footer class="pied">Les matchs sont mis à jour automatiquement depuis les agendas du club.</footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/entrainements.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #dbe6f5;
+  background: radial-gradient(ellipse at top, #1a3260 0%, #0d1f3c 60%);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+.hero { text-align: center; margin: 36px auto 24px; padding: 0 16px; }
+.hero img {
+  width: 96px; height: 96px; border-radius: 50%;
+  border: 3px solid #C8A84B; box-shadow: 0 0 32px #C8A84B44; margin-bottom: 14px;
+}
+.hero h1 {
+  color: #C8A84B; font-size: 1.4rem; font-weight: 900;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;
+}
+.hero p { color: #8fa8c8; font-size: 0.9rem; letter-spacing: 0.5px; }
+.divider { width: 60px; height: 2px; background: linear-gradient(to right, transparent, #C8A84B, transparent); margin: 16px auto 0; }
+
+.conteneur { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+
+.conteneur.large { max-width: 1280px; }
+.conteneur.large .onglets, .conteneur.large .outils, .conteneur.large .bandeau { max-width: 780px; margin-left: auto; margin-right: auto; }
+.conteneur.large .outils { margin-bottom: 20px; }
+.conteneur.large .bandeau { margin-bottom: 16px; }
+
+.onglets { display: flex; gap: 8px; margin-bottom: 16px; }
+.onglets button {
+  flex: 1; padding: 11px 12px; border-radius: 12px; cursor: pointer; font-family: inherit;
+  background: #162847; border: 1.5px solid #1e3a5f; color: #8fa8c8; font-size: 0.95rem; font-weight: 700;
+}
+.onglets button.actif { background: #C8A84B; border-color: #C8A84B; color: #0d1f3c; }
+
+.btn.actif { background: #C8A84B; color: #0d1f3c; }
+
+.tableau-wrap {
+  overflow-x: auto; background: #fff; border: 1.5px solid #1e3a5f; border-radius: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+table.grille { border-collapse: collapse; color: #111; font-size: 0.82rem; min-width: 940px; width: 100%; }
+table.grille td { border: 1px solid #8a8a8a; padding: 5px 7px; vertical-align: middle; min-width: 78px; overflow-wrap: anywhere; }
+table.grille td.b { font-weight: 700; }
+table.grille td.i { font-style: italic; }
+table.grille td.centre { text-align: center; }
+table.grille td.sticky { position: sticky; left: 0; z-index: 1; min-width: 118px; box-shadow: 2px 0 0 #8a8a8a; }
+table.grille td.trouve { background: #C8A84B !important; font-weight: 800; outline: 2px solid #0d1f3c; outline-offset: -2px; }
+.aide-tableau { color: #6f88a8; font-size: 0.8rem; text-align: center; margin-top: 8px; }
+
+.bloc { margin-bottom: 14px; }
+.barre-jour {
+  display: inline-block; background: #134f5c; color: #fff; font-weight: 700; font-size: 0.85rem;
+  padding: 6px 14px; border-radius: 10px 10px 0 0; margin-left: 2px;
+}
+.bloc .tableau-wrap { border-top-left-radius: 0; }
+.bloc table.grille { min-width: 0; table-layout: fixed; }
+.bloc table.grille td { min-width: 0; }
+.bloc table.grille tr td:first-child { width: 17%; }
+[hidden] { display: none !important; }
+.jour-vide {
+  background: #162847; border: 1.5px dashed #1e3a5f; color: #8fa8c8; font-size: 0.85rem;
+  padding: 10px 14px; border-radius: 0 12px 12px 12px;
+}
+button.passes { display: block; margin: 8px auto 0; }
+
+.groupe.aujourdhui h2 { color: #fff; }
+.ligne { padding: 2px 0; overflow-wrap: anywhere; }
+.ligne .equipe { color: #fff; font-weight: 700; }
+.ligne .lieu-inline { color: #8fa8c8; font-size: 0.88rem; }
+
+.outils { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+#recherche {
+  width: 100%; padding: 12px 16px; border-radius: 12px;
+  background: #162847; border: 1.5px solid #1e3a5f; color: #fff; font-size: 1rem;
+}
+#recherche::placeholder { color: #6f88a8; }
+#recherche:focus { outline: none; border-color: #C8A84B; }
+.boutons { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 9px 16px; border-radius: 10px; cursor: pointer;
+  background: transparent; border: 1.5px solid #C8A84B; color: #C8A84B;
+  font-size: 0.85rem; font-weight: 600; text-decoration: none; font-family: inherit;
+}
+.btn:hover { background: #C8A84B; color: #0d1f3c; }
+
+.bandeau {
+  background: #3a2f10; border: 1.5px solid #C8A84B; color: #f0dc9a;
+  border-radius: 12px; padding: 10px 14px; font-size: 0.85rem; margin-bottom: 16px;
+}
+.bandeau code { background: #0d1f3c; padding: 1px 6px; border-radius: 4px; }
+.etat { text-align: center; color: #8fa8c8; padding: 24px 0; }
+.etat.erreur { color: #ff9b9b; }
+
+.groupe { margin-bottom: 22px; }
+.groupe h2 {
+  color: #C8A84B; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 8px; padding-left: 4px;
+}
+.groupe.semaine h2 { color: #8fa8c8; }
+.match {
+  display: grid; grid-template-columns: 74px 1fr; gap: 14px; align-items: start;
+  background: #162847; border: 1.5px solid #1e3a5f; border-radius: 14px;
+  padding: 12px 16px; margin-bottom: 8px;
+}
+.quand { text-align: center; }
+.quand .jour { display: block; color: #8fa8c8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.quand .heure { display: block; color: #fff; font-size: 1.25rem; font-weight: 800; }
+.quand .num { display: block; color: #C8A84B; font-size: 0.8rem; }
+.infos .titre { color: #fff; font-weight: 700; font-size: 1rem; overflow-wrap: anywhere; }
+.infos .lieu { color: #8fa8c8; font-size: 0.85rem; margin-top: 3px; overflow-wrap: anywhere; }
+.infos .lieu a { color: #8fc1ff; text-decoration: none; }
+.infos .lieu a:hover { text-decoration: underline; }
+.infos .desc { color: #6f88a8; font-size: 0.8rem; margin-top: 4px; white-space: pre-line; overflow-wrap: anywhere; }
+
+.pied { text-align: center; color: #6f88a8; font-size: 0.8rem; margin-top: 30px; padding: 0 16px; }
+
+@media (max-width: 420px) {
+  .match { grid-template-columns: 62px 1fr; padding: 10px 12px; }
+}
+
+@media print {
+  body { background: #fff; color: #000; padding: 0; }
+  .outils, .bandeau, .pied, .divider, .onglets, .aide-tableau { display: none !important; }
+  .tableau-wrap { overflow: visible; border: none; }
+  table.grille { min-width: 0; font-size: 0.65rem; }
+  table.grille td.sticky { position: static; box-shadow: none; }
+  .hero img { box-shadow: none; }
+  .hero h1, .groupe h2 { color: #000; }
+  .hero p, .quand .jour, .infos .lieu, .infos .lieu a { color: #333; }
+  .match { background: #fff; border: 1px solid #999; break-inside: avoid; }
+  .quand .heure, .infos .titre { color: #000; }
+  .quand .num { color: #555; }
+}
+
+/* =====================================================================
+   DESIGN 2 — cartes par jour, étiquettes de matchs, tableau d'entraînements
+   ===================================================================== */
+:root {
+  --or: #C8A84B; --nuit: #0d1f3c; --carte: #132644; --carte-haut: #1b3a63;
+  --bord: #23416b; --texte: #e6eefb; --muted: #8fa8c8;
+}
+
+/* Titre de week-end : filet doré qui s'étire */
+.groupe.weekend > h2 {
+  display: flex; align-items: center; gap: 14px;
+  color: var(--or); font-size: 0.95rem; letter-spacing: 1.6px; margin: 26px 2px 12px;
+}
+.groupe.weekend > h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, #C8A84B77, transparent); }
+
+/* Carte d'un jour */
+.carte-jour {
+  background: linear-gradient(180deg, #152b4d 0%, #112240 100%);
+  border: 1px solid var(--bord); border-radius: 18px; margin-bottom: 16px; overflow: hidden;
+  box-shadow: 0 10px 28px #0007;
+}
+.carte-jour.aujourdhui { border-color: var(--or); box-shadow: 0 0 0 1px #C8A84B55, 0 10px 30px #C8A84B22; }
+.carte-tete {
+  display: flex; align-items: center; gap: 10px; padding: 13px 18px;
+  background: linear-gradient(90deg, var(--carte-haut), #152b4d); border-bottom: 1px solid var(--bord);
+}
+.carte-tete h3 { margin-right: auto; color: #fff; font-size: 1.02rem; font-weight: 800; letter-spacing: 0.3px; }
+.carte-tete .compte { color: var(--muted); font-size: 0.74rem; font-weight: 600; background: #0d1f3c; padding: 4px 11px; border-radius: 99px; }
+.carte-tete .badge { background: var(--or); color: #0d1f3c; font-size: 0.68rem; font-weight: 800; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.6px; }
+
+.matchs-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.matchs { width: 100%; border-collapse: collapse; }
+table.matchs th {
+  text-align: left; white-space: nowrap; padding: 11px 14px 9px;
+  color: var(--or); font-size: 0.72rem; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase;
+  border-bottom: 1px solid var(--bord);
+}
+table.matchs th.t-heure { min-width: 128px; font-size: 0.85rem; letter-spacing: 0.6px; }
+table.matchs td { padding: 7px 10px; vertical-align: top; border-top: 1px solid #ffffff0c; }
+table.matchs td.t-terrain {
+  position: sticky; left: 0; z-index: 1; background: #13264a; white-space: nowrap;
+  padding: 12px 12px; color: #fff; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.7px;
+}
+table.matchs tr.vide td { padding-top: 3px; padding-bottom: 3px; }
+table.matchs tr.vide td.t-terrain { color: var(--muted); font-weight: 600; padding-top: 6px; padding-bottom: 6px; }
+table.matchs tr.vide .dot { opacity: 0.4; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 9px; flex: none; }
+
+/* Étiquette de match / d'équipe */
+.puce {
+  --c: #C8A84B;
+  display: flex; flex-direction: column; gap: 1px; padding: 8px 11px; border-radius: 9px;
+  background: #182c4e;
+  background: color-mix(in oklab, var(--c) 24%, #0f2140);
+  border-left: 3px solid var(--c);
+}
+.puce + .puce { margin-top: 6px; }
+.puce .eq { color: #fff; font-weight: 800; font-size: 0.87rem; line-height: 1.25; overflow-wrap: anywhere; }
+.puce .vs { color: #cbd9ee; font-size: 0.8rem; line-height: 1.25; overflow-wrap: anywhere; }
+.puce .vs::before { content: "vs "; color: var(--muted); }
+.puce .tag { align-self: flex-start; margin-top: 4px; color: var(--c); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; }
+.puce.trouve { outline: 2px solid var(--or); background: color-mix(in oklab, var(--c) 45%, #0f2140); }
+.puce.simple { flex-direction: row; align-items: center; padding: 4px 9px; border-radius: 7px; }
+.puce.simple .eq { font-size: 0.78rem; font-weight: 700; }
+.puce.note { background: #3a2f10; }
+.puce.note .eq { color: #f7dd85; font-weight: 600; }
+
+/* Tableau des entraînements (habillage du site) */
+.tableau-wrap.moderne {
+  background: linear-gradient(180deg, #152b4d 0%, #112240 100%);
+  border: 1px solid var(--bord); border-radius: 18px; box-shadow: 0 10px 28px #0007;
+}
+table.grille.moderne { min-width: 1020px; color: var(--texte); border-collapse: collapse; }
+table.grille.moderne td { border: none; border-top: 1px solid #ffffff0c; padding: 6px 7px; vertical-align: middle; min-width: 0; }
+table.grille.moderne td.r-titre {
+  text-align: center; padding: 15px; color: var(--or); font-weight: 800; font-size: 0.9rem;
+  letter-spacing: 4px; text-transform: uppercase; border-top: none;
+  background: linear-gradient(90deg, transparent, #C8A84B26, transparent);
+}
+table.grille.moderne td.r-jour {
+  text-align: center; background: var(--carte-haut); color: #fff; font-weight: 800; font-size: 0.8rem;
+  letter-spacing: 1.6px; text-transform: uppercase; padding: 10px; border-top: none;
+}
+table.grille.moderne td.r-creneau {
+  text-align: center; background: #152b4d; color: var(--or); font-weight: 700; font-size: 0.78rem; white-space: nowrap;
+  border-bottom: 1px solid var(--bord);
+}
+table.grille.moderne td.r-lieu {
+  position: sticky; left: 0; z-index: 1; background: #13264a; color: #fff; font-weight: 700; font-size: 0.8rem;
+  white-space: nowrap; padding: 9px 14px; min-width: 150px; box-shadow: 2px 0 0 #0d1f3c;
+}
+table.grille.moderne td.nj { border-left: 1px solid #C8A84B33; }
+table.grille.moderne tr:nth-child(even) td:not(.r-jour):not(.r-creneau):not(.r-titre):not(.r-lieu) { background: #ffffff05; }
+.puces { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Petits écrans */
+@media (max-width: 560px) {
+  .carte-tete { padding: 11px 13px; }
+  .carte-tete h3 { font-size: 0.95rem; }
+  table.matchs th.t-heure { min-width: 132px; }
+  table.matchs td.t-terrain { padding: 10px 10px; font-size: 0.7rem; letter-spacing: 0.4px; }
+  .dot { margin-right: 6px; }
+}
+
+/* Impression : version claire et sobre */
+@media print {
+  .carte-jour, .tableau-wrap.moderne { background: #fff; border: 1px solid #999; box-shadow: none; page-break-inside: avoid; }
+  .carte-tete, table.grille.moderne td.r-jour, table.grille.moderne td.r-creneau { background: #eee; }
+  .carte-tete h3, table.matchs th, .puce .eq, table.matchs td.t-terrain, table.grille.moderne td { color: #000; }
+  .carte-tete .compte, .carte-tete .badge { display: none; }
+  table.matchs td.t-terrain, table.grille.moderne td.r-lieu { position: static; background: #fff; box-shadow: none; }
+  .puce { background: #f4f4f4; border-left-color: #666; }
+  .puce .vs, .puce .tag { color: #333; }
+  .puce.note { background: #fff3c4; }
+  .puce.note .eq { color: #000; }
+  table.grille.moderne { min-width: 0; }
+}
+
+/* Correctifs : pas de coupure de mots dans les étiquettes d'entraînement */
+.puce.simple .eq { overflow-wrap: normal; word-break: normal; white-space: normal; }
+table.grille.moderne { min-width: 1120px; }
+table.grille.moderne td:not(.r-lieu):not(.r-titre) { min-width: 88px; }
+
+/* Matchs sur téléphone : une ligne par heure au lieu du tableau */
+.liste-heures { display: none; padding: 4px 14px 12px; }
+.ligne-heure { display: grid; grid-template-columns: 56px 1fr; gap: 10px; padding: 11px 0; border-top: 1px solid #ffffff0d; }
+.ligne-heure:first-child { border-top: none; }
+.ligne-heure .h { color: var(--or); font-weight: 800; font-size: 1.02rem; padding-top: 2px; }
+.ligne-heure .items { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.item .terrain-tag { display: flex; align-items: center; margin-bottom: 4px; color: var(--muted); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; }
+.item .terrain-tag .dot { width: 8px; height: 8px; margin-right: 7px; }
+@media screen and (max-width: 640px) {
+  .matchs-wrap { display: none; }
+  .liste-heures { display: block; }
+}
+@media print { .liste-heures { display: none !important; } .matchs-wrap { display: block !important; } }
