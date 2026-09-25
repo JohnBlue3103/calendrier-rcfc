@@ -67,8 +67,7 @@ window.ENTRAINEMENTS = {
       cases: {
         "Mercredi 15h-16h15": { texte: "14h - 17 h ponctuellement", colonnes: 2, note: true },
         "Vendredi 17h-20h": "U15G",
-        // TEXTE À COMPLÉTER : coupé sur la capture d'origine ("…enior G / Senior…")
-        "Vendredi 20h-22h": "Senior G / Senior",
+        "Vendredi 20h-22h": "Senior G / Senior F",
         "Samedi 10h30-11h30": { texte: "Sur demande une semaine à l'avance", note: true },
       },
     },
