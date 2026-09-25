@@ -270,3 +270,7 @@ table.grille.moderne td:not(.r-lieu):not(.r-titre) { min-width: 88px; }
   .liste-heures { display: block; }
 }
 @media print { .liste-heures { display: none !important; } .matchs-wrap { display: block !important; } }
+
+/* Matchs passés : un peu plus discrets */
+.carte-jour.passee { opacity: 0.88; }
+.carte-jour.passee .carte-tete { background: #16294a; }

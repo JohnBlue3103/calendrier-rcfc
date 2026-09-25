@@ -24,6 +24,7 @@
     a.hidden = false;
   }
   $("btn-imprimer").addEventListener("click", () => window.print());
+  $("btn-passes").addEventListener("click", () => { vuePassee = !vuePassee; majBoutons(); afficher(); });
 
   function el(tag, cls, text) {
     const n = document.createElement(tag);
@@ -278,7 +279,8 @@
   function carteMatchs(b, q) {
     const d = b.donnees;
     const aujourdhui = !!b.date && +b.date === +startOfDay(new Date());
-    const carte = el("div", "carte-jour" + (aujourdhui ? " aujourdhui" : ""));
+    const passee = !!b.date && b.date < startOfDay(new Date());
+    const carte = el("div", "carte-jour" + (aujourdhui ? " aujourdhui" : "") + (passee ? " passee" : ""));
     const tete = el("div", "carte-tete");
     tete.appendChild(el("h3", null, b.label));
     if (aujourdhui) tete.appendChild(el("span", "badge", "Aujourd'hui"));
@@ -416,16 +418,17 @@
   }
 
   /* ----- affichage des matchs ----- */
-  let afficherPasses = false;
+  let vuePassee = window.location && window.location.hash === "#passes";
 
   function rendreMatchs(liste, q) {
     const { grille, groupes } = donnees.matchs;
     const aujourdhui = startOfDay(new Date());
-    const passe = (g) => g.fin && g.fin < aujourdhui;
-    const nbPasses = groupes.filter(passe).length;
+    const passe = (g) => !!g.fin && g.fin < aujourdhui;
+    const choisis = groupes.filter((g) => (vuePassee ? passe(g) : !passe(g)));
+    if (vuePassee) choisis.reverse();
     let rendus = 0;
-    for (const g of groupes) {
-      if (!afficherPasses && !q && passe(g)) continue;
+    if (vuePassee && choisis.length) liste.appendChild(el("p", "aide-tableau", "Matchs des " + (cfg.JOURS_PASSES || 0) + " derniers jours, du plus récent au plus ancien."));
+    for (const g of choisis) {
       const sec = el("section", "groupe weekend");
       let contenu = 0;
       if (g.blocs.length > 1) sec.appendChild(el("h2", null, g.titre));
@@ -453,13 +456,9 @@
       }
       if (contenu) { liste.appendChild(sec); rendus++; }
     }
-    if (!q && nbPasses) {
-      const b = el("button", "btn passes", afficherPasses ? "Masquer les week-ends passés" : `Voir les week-ends passés (${nbPasses})`);
-      b.type = "button";
-      b.addEventListener("click", () => { afficherPasses = !afficherPasses; afficher(); });
-      liste.appendChild(b);
-    }
-    if (!rendus) return q ? "Aucun match ne correspond à votre recherche." : "Aucun match à domicile à venir pour le moment.";
+    if (!rendus) return q ? "Aucun match ne correspond à votre recherche."
+      : vuePassee ? "Aucun match passé sur les " + (cfg.JOURS_PASSES || 0) + " derniers jours."
+      : "Aucun match à domicile à venir pour le moment.";
     return null;
   }
 
@@ -612,6 +611,9 @@
     $("tab-matchs").classList.toggle("actif", onglet === "matchs");
     $("tab-entrainements").classList.toggle("actif", onglet === "entrainements");
     $("btn-agenda").style.display = onglet === "matchs" ? "" : "none";
+    $("btn-passes").style.display = onglet === "matchs" ? "" : "none";
+    $("btn-passes").classList.toggle("actif", vuePassee);
+    $("btn-passes").textContent = vuePassee ? "← Matchs à venir" : "Matchs passés";
     $("bandeau-demo").hidden = !(onglet === "matchs" && modeMatchs === "demo");
     document.querySelector(".conteneur").classList.toggle("large", onglet === "entrainements" && vue === "tableau");
     $("vue-ent").style.display = onglet === "entrainements" ? "" : "none";

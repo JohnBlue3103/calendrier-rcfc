@@ -19,7 +19,7 @@ window.CALENDRIER_CONFIG = {
   // OPTION : un seul agenda contenant tous les matchs (le terrain est alors lu dans le champ "Lieu")
   CALENDAR_ID: "",
   JOURS_A_VENIR: 180,
-  JOURS_PASSES: 0,
+  JOURS_PASSES: 60,
 
   // Comment un événement est placé dans le tableau :
   //  - la LIGNE = le terrain (son agenda ; à défaut, un des mots clés du champ "Lieu")
